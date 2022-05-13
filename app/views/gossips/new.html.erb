@@ -1,0 +1,29 @@
+<h1> Créer un potin ! </h1>
+<p>Rentre les infos de ton potin grâce au formulaire ci dessous</p>
+
+
+<% if !@gossip.nil? && @gossip.errors.any? %>
+<div class="alert alert-danger" role="alert">
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @gossip.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>  
+<% end %>
+<div class="form-container"> 
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+   <%= label_tag 'Titre' %>
+   <%= text_field_tag 'title', (@gossip.title if !@gossip.nil?) %>
+   <br /> <br />
+
+   <%= label_tag 'Content' %>
+      <%= text_area_tag 'content',(@gossip.content if !@gossip.nil?)  %>
+      <br /> <br />
+
+      <%= submit_tag "Enregistrer ce potin" %>
+
+    <% end %>
+</div>    

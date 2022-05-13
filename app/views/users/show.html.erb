@@ -1,0 +1,22 @@
+
+
+<div class="card">
+   <div class="card-header font-weight-bold">
+   <img src="https://source.unsplash.com/200x200/?portrait?sig=<%=rand(1..50)%>" 
+                     alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"> 
+   </div>
+   <div class="card-body">                
+      <h4 class="card-title"> Prenom : <%=@user.first_name%></h4>
+      <div class="card-text">
+      <p> Nom : <%=@user.last_name%></p>
+      <p> Age : <%=@user.age%></p>
+      <p> Description : <%=@user.description%></p>
+      <p> Email : <%=@user.email%></p>
+      <p> City : <%=@user.city.name%></p>
+      <button type="button" class="btn btn-info"><%= link_to "Ville", city_path(@user.city) %> </button>
+      </div>
+   </div>  
+</div>
+
+
+

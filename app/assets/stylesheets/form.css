@@ -1,0 +1,29 @@
+.form-container{
+   padding: 12px 20px;
+   margin: 8px 0;
+   border: 2px solid rgb(79, 126, 221);
+  border-radius: 4px;
+  background-color: rgb(79, 126, 221);
+  color: white;
+}
+
+.form-container form{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+}
+
+.form-container input[type=text]{
+   border-radius: 3px;
+   border: none;
+   width: 200px;
+}
+
+.form-container input[type=textarea]{
+   border-radius: 3px;
+   border: none;
+   width: 200px;
+   height: 50px;
+}
+
+

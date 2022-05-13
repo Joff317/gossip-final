@@ -1,0 +1,63 @@
+<div class="card">
+ <div class="card-header">
+ <h1 class="text-center"> <%= @gossip.title %></h1>
+ <h5 class="text-center">Voici la page du potin<%= @gossip.id %></h5>
+ </div>
+  <div class="container d-flex flex-column align-items-center mt-5">
+  <div>
+  <img src="https://source.unsplash.com/200x200/?portrait?sig=<%=rand(1..50)%>" 
+                     alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"> 
+    <h1 class="card-title"> <%= @gossip.user.first_name %></h1>
+  </div>  
+   <div class="card-body">
+    <p>Le content est : <%= @gossip.content %></p>
+    <p>Le date de création est : <%= @gossip.created_at %></p>
+    <p>La ville est : <%= @gossip.user.city.name %></p>
+   </div> 
+  </div>
+    <p><%= @gossip.likes.count %> <%= (@gossip.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    <div class="container d-flex mt-5">
+      <button type="button" class="btn btn-outline-primary btn-sm w-25 p-3 me-2"><%= link_to "Author's Profile", user_path(@gossip.user.id) %></button>
+      <% if current_user %>
+      <button type="button" class="btn btn-outline-primary btn-sm w-25 p-3 me-2"><a href="<%=  gossip_likes_path(@gossip)%>" data-method="POST"> Liker</a></button>
+      <% else %>
+      <%end%>
+      <% pre_like = @gossip.likes.find { |like| like.user == current_user} %>
+      <% if pre_like %>
+      <button type="button" class="btn btn-outline-primary btn-sm w-25 p-3 me-2"><a href="<%= gossip_like_path(@gossip, pre_like)%>" data-method="DELETE"> Supprimer </a></button> 
+      <% else %>
+      <% end %>
+
+      <% if current_user == @gossip.user %>
+      <button type="button" class="btn btn-outline-primary btn-sm w-25 p-3 me-2"><%= link_to "Modifier", edit_gossip_path(@gossip.id) %></button>
+      <button type="button" class="btn btn-outline-primary btn-sm w-25 p-3 me-2"><%= link_to "Commenter", new_gossip_comment_path(@gossip.id) %></button> 
+      <button type="button" class="btn btn-outline-primary btn-sm w-25 p-3 me-2"><a href="<%= gossip_path(@gossip.id) %>" data-method="DELETE"> Supprimer </a></button> 
+    <% else %>
+    <% end %>
+    </div>
+  </div>
+
+  
+
+<div class="comments"> 
+<h1> Commentaires {<%= @comments.length%>} </h1>
+
+<% @comments.each do |comment|%>
+  <div class="comment">
+  <img src="https://source.unsplash.com/200x200/?portrait?sig=<%=rand(1..50)%>" 
+                alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+    <div>            
+    <h2> <%= comment.user.first_name %> </h2>
+    <h3> <%= comment.content %> </h3>
+    </div>
+    
+    <button type="button" class="btn btn-outline-primary btn-sm w-25 p-3 me-2"><%= link_to "Edit le commentaire", edit_gossip_comment_path(@gossip, comment.id) %></button> 
+    <button type="button" class="btn btn-outline-primary btn-sm w-25 p-3 me-2"><a href="<%= gossip_comment_path(@gossip, comment.id) %>" data-method="DELETE"> Supprimer </a></button> 
+     
+  </div>
+  
+ <% end %>
+</div> 
+
+
+<a href=""></a>

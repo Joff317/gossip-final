@@ -1,0 +1,20 @@
+<h1>Les villes</h1>
+
+<h4> Nom : <%=@city.name%></h4>
+
+<div class= "container-fluid">
+   <div class= "row">
+   <% @gossip.each do |go|%>
+      <% if go.user.city_id == @city.id %>
+         <div class= "col-4 col-sm-6 col-md-4 col-lg-4 mt-5 text-center" >
+            <div class="card" style="width: 18rem">
+               <div class="card-body">
+                  <h5 class="card-title"> <%= go.title %> </h5> 
+                  <h5 class="card-title"> <%= go.content %> </h5>   
+               </div>   
+            </div>      
+         </div>   
+         <% end %>
+         <% end %>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<% if !@comment.nil? && @comment.errors.any? %>
+<div class="alert alert-danger" role="alert">
+  <p>Nous n'avons pas réussi à ajouter le commentaire pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>  
+<% end %>
+<div class="form-container">
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+   <%= label_tag 'Comment' %>
+
+   <%= label_tag 'Content' %>
+      <%= text_area_tag 'content', @comment.content  %>
+      <br /> <br />
+
+      <%= submit_tag "Enregistrer ce commentaire", class: "btn btn-primary" %>
+
+    <% end %>
+</div>    

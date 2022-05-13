@@ -1,0 +1,72 @@
+<div class="card text-center mb-3">
+  <div class="card-body">
+
+<h1>Sign Up</h1>
+<div class="container">
+    <%= form_for @user do |f| %>
+      <div class="row justify-content-center align-self-center mx-5">  
+      <div class="col-3">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, options = {style:"height:30px;width:300px"} %>
+      </div>
+      </div>
+
+      <div class="row justify-content-center align-self-center mx-5">  
+      <div class="col-3">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, options = {style:"height:30px;width:300px"} %>
+      </div>
+      </div>
+
+      <div class="row justify-content-center align-self-center mx-5">  
+      <div class="col-3">
+        <%= f.label :email %>
+        <%= f.text_field :email, options = {style:"height:30px;width:300px"} %>
+      </div>
+      </div>
+
+      <div class="row justify-content-center align-self-center mx-5">
+      <div class="col-3">
+        <%= f.label :description %>
+        <%= f.text_field :description, options = {style:"height:30px;width:300px"} %>
+      </div>
+      </div>
+
+      <div class="row justify-content-center align-self-center mx-5">
+      <div class="col-3">
+      <%= f.label :age %>
+      <%= f.text_field :age, options = {style:"height:30px;width:300px"} %>
+      </div>
+      </div>
+
+    <div class="row justify-content-center align-self-center mx-5"> 
+    <div class="col-3">
+    <%= f.label :city_id %>
+    <%= f.text_field :city_id, options = {style:"height:30px;width:300px"} %>
+    </div>
+    </div>
+
+    <div class="row justify-content-center align-self-center mx-5"> 
+    <div class="col-3">
+        <%= f.label :password %>
+        <%= f.password_field :password, options = {style:"height:30px;width:300px"} %>
+    </div>
+    </div>
+
+    <div class="row justify-content-center align-self-center mx-5"> 
+    <div class="col-3">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, options = {style:"height:30px;width:300px"} %>
+    </div>
+    </div>
+
+    <div class="row justify-content-center align-self-center mx-5"> 
+    <div class="col-3">
+        <%= f.submit "Sign up!" %>
+      </div>
+      </div>
+    <% end %>
+
+</div>
+</div>
+</div>

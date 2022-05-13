@@ -1,0 +1,29 @@
+
+
+<div class="jumbotron-hero">
+  <div class="container text-center" >
+    <h1 class="display-4 pt-5 font-weight-bold text-dark">THE GOSSIP PROJECT</h1>
+    <p class="lead pt-5 text-dark ">Join our community and share your gossips</p>
+  </div>
+</div>
+
+
+<div class= "container d-flex justify-content-around">
+   <div class= "row">
+    <% @gossips.each do |gos| %>
+         <div class= "col-4 col-sm-4 col-md-4 col-lg-4 mt-5 text-center" >
+            <div class="card" style="width: 18rem">
+            <img class="card-img-top" src="https://source.unsplash.com/200x200/?portrait?sig=<%=rand(1..50)%>" 
+                alt="Card image cap" class="rounded-circle img-fluid">
+               <div class="card-body">
+                  <h5 class="card-title"> <%= gos.user.first_name %> </h5>  
+                     <p class ="card-title">  <%= gos.title %> </p>
+                     <%= link_to "Clique sur ce lien pour voir le potin au dessus", gossip_path(gos.id), class: 'btn btn-primary' %>  
+                    <p class="card-title"><%= gos.likes.count %> <%= (gos.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+               </div>   
+            </div>      
+         </div>   
+         <% end %>
+    </div>
+</div>
+
